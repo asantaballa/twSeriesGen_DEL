@@ -1,17 +1,26 @@
 <html>
 <head>
- <script src="twSeriesGen.js"></script> 
+    <meta charset="utf-8"/>
+    <script src="twSeriesGen.js"></script>
 </head>
 <body onload='DoOnLoad();'>
-<script> 
+<script>
 //GenTestMsg();
-function DoOnLoad()
-{
+function DoOnLoad() {
+    var seriesGen = new SeriesGen();
+    seriesGen.Gen();
+    var results = seriesGen.getSeries();
+    console.log(results);
 	var divResults = document.getElementById('divResults');
-	divResults.innerText = 'Filling the div 01';
+    var rHTML = "";
+    results.forEach(function(entry) {
+        console.log(entry.Value);
+        rHTML += entry.Value + "<br />";
+    });
+    divResults.innerHTML = rHTML;
 }
 </script>
-Hello, world!
+<h1>SeriesGen</h1>
 <hr />
 <div id="divResults"></div>
 </body>
